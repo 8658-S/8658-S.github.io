@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS - Home</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #202124;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 30px;
+  font-size: 14px;
+}
+
+header a {
+  color: #444;
+  text-decoration: none;
+}
+
+main {
+  text-align: center;
+  padding: 75px 20px 40px;
+}
+
+.logo {
+  font-size: 65px;
+  font-weight: 600;
+  letter-spacing: -4px;
+  margin-bottom: 30px;
+}
+
+.logo span:nth-child(1) { color: #4285f4; }
+.logo span:nth-child(2) { color: #ea4335; }
+.logo span:nth-child(3) { color: #fbbc05; }
+.logo span:nth-child(4) { color: #4285f4; }
+.logo span:nth-child(5) { color: #34a853; }
+.logo span:nth-child(6) { color: #ea4335; }
+
+.search-box {
+  max-width: 580px;
+  margin: auto;
+  display: flex;
+  border: 1px solid #dfe1e5;
+  border-radius: 30px;
+  padding: 13px 18px;
+  box-shadow: 0 1px 5px #ddd;
+}
+
+.search-box:hover {
+  box-shadow: 0 2px 8px #ccc;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  min-width: 0;
+}
+
+.search-box button {
+  border: none;
+  background: white;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+.buttons button {
+  background: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  padding: 11px 18px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h3 {
+  margin-top: 65px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.apps {
+  max-width: 650px;
+  margin: 25px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.app {
+  text-decoration: none;
+  color: #333;
+  padding: 18px 8px;
+  border-radius: 12px;
+  transition: 0.2s;
+}
+
+.app:hover {
+  background: #f1f3f4;
+}
+
+.app-icon {
+  width: 48px;
+  height: 48px;
+  margin: auto auto 10px;
+  border-radius: 50%;
+  background: #f1f3f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+
+.app p {
+  font-size: 13px;
+  margin: 0;
+}
+
+footer {
+  margin-top: 50px;
+  color: #777;
+  font-size: 12px;
+}
+
+@media (max-width: 450px) {
+  .logo { font-size: 49px; }
+  main { padding-top: 55px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <span>NEXUS</span>
+  <a href="https://www.google.com">Google</a>
+</header>
+
+<main>
+
+  <div class="logo">
+    <span>N</span><span>E</span><span>X</span><span>U</span><span>S</span>
+  </div>
+
+  <form action="https://www.google.com/search" method="GET">
+    <div class="search-box">
+      <input
+        type="text"
+        name="q"
+        placeholder="Search the web with Google..."
+        required
+      >
+      <button type="submit" aria-label="Search">⌕</button>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">Google Search</button>
+    </div>
+  </form>
+
+  <h3>Your favourite apps</h3>
+
+  <div class="apps">
+
+    <a class="app" href="https://www.google.com" target="_blank">
+      <div class="app-icon">🔍</div>
+      <p>Google</p>
+    </a>
+
+    <a class="app" href="https://www.youtube.com" target="_blank">
+      <div class="app-icon">▶️</div>
+      <p>YouTube</p>
+    </a>
+
+    <a class="app" href="https://mail.google.com" target="_blank">
+      <div class="app-icon">✉️</div>
+      <p>Gmail</p>
+    </a>
+
+    <a class="app" href="https://drive.google.com" target="_blank">
+      <div class="app-icon">📁</div>
+      <p>Google Drive</p>
+    </a>
+
+    <a class="app" href="https://classroom.google.com" target="_blank">
+      <div class="app-icon">🎓</div>
+      <p>Classroom</p>
+    </a>
+
+    <a class="app" href="https://www.wikipedia.org" target="_blank">
+      <div class="app-icon">📚</div>
+      <p>Wikipedia</p>
+    </a>
+
+  </div>
+
+  <footer>
+    NEXUS • Your personal web homepage
+  </footer>
+
+</main>
+
+</body>
+</html>
