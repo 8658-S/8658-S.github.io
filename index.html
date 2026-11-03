@@ -3,147 +3,264 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXUS - Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXUS 2.0</title>
 
 <style>
-* {
-  box-sizing: border-box;
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #f8faff;
+  --card: #ffffff;
+  --text: #202124;
+  --muted: #70757a;
+  --line: #e5e8ef;
+  --blue: #4285f4;
+}
+
+body.dark {
+  --bg: #111827;
+  --card: #1d293b;
+  --text: #f5f7fb;
+  --muted: #aab5c5;
+  --line: #354256;
+  --blue: #75a7ff;
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #ffffff;
-  color: #202124;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
+  transition: .2s;
 }
 
 header {
+  height: 70px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 22px 30px;
-  font-size: 14px;
+  padding: 0 6%;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
 }
 
-header a {
-  color: #444;
-  text-decoration: none;
+.brand {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand span:nth-child(1) { color: #4285f4; }
+.brand span:nth-child(2) { color: #ea4335; }
+.brand span:nth-child(3) { color: #fbbc05; }
+.brand span:nth-child(4) { color: #4285f4; }
+.brand span:nth-child(5) { color: #34a853; }
+.brand span:nth-child(6) { color: #ea4335; }
+
+nav {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+button, a { font: inherit; }
+
+nav button, .tool-button {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  padding: 10px 13px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+nav button:hover, .tool-button:hover {
+  background: var(--line);
 }
 
 main {
-  text-align: center;
-  padding: 75px 20px 40px;
+  width: min(1000px, 92%);
+  margin: 55px auto;
 }
 
-.logo {
-  font-size: 65px;
-  font-weight: 600;
+.hero { text-align: center; }
+
+.hero h1 {
+  font-size: clamp(48px, 9vw, 76px);
+  margin: 15px 0 5px;
   letter-spacing: -4px;
-  margin-bottom: 30px;
 }
 
-.logo span:nth-child(1) { color: #4285f4; }
-.logo span:nth-child(2) { color: #ea4335; }
-.logo span:nth-child(3) { color: #fbbc05; }
-.logo span:nth-child(4) { color: #4285f4; }
-.logo span:nth-child(5) { color: #34a853; }
-.logo span:nth-child(6) { color: #ea4335; }
+.hero p { color: var(--muted); }
 
-.search-box {
-  max-width: 580px;
-  margin: auto;
+.search {
   display: flex;
-  border: 1px solid #dfe1e5;
-  border-radius: 30px;
-  padding: 13px 18px;
-  box-shadow: 0 1px 5px #ddd;
+  align-items: center;
+  gap: 10px;
+  max-width: 680px;
+  margin: 30px auto 15px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 35px;
+  padding: 7px 10px 7px 20px;
+  box-shadow: 0 3px 14px #0000000b;
 }
 
-.search-box:hover {
-  box-shadow: 0 2px 8px #ccc;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 16px;
+.search input {
   min-width: 0;
+  flex: 1;
+  padding: 12px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 16px;
 }
 
-.search-box button {
-  border: none;
-  background: white;
+.search button {
+  border: 0;
+  border-radius: 25px;
+  background: var(--blue);
+  color: white;
+  padding: 12px 18px;
   cursor: pointer;
+}
+
+.modes {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 20px 0 35px;
+}
+
+.mode {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 10px 17px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.mode.active {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.section-title {
+  margin: 40px 0 18px;
   font-size: 19px;
 }
 
-.buttons {
-  margin-top: 25px;
-}
-
-.buttons button {
-  background: #f8f9fa;
-  border: 1px solid #f8f9fa;
-  padding: 11px 18px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-h3 {
-  margin-top: 65px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
 .apps {
-  max-width: 650px;
-  margin: 25px auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 15px;
 }
 
 .app {
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--text);
   text-decoration: none;
-  color: #333;
-  padding: 18px 8px;
-  border-radius: 12px;
-  transition: 0.2s;
+  border-radius: 15px;
+  padding: 20px 10px;
+  text-align: center;
+  transition: .2s;
 }
 
 .app:hover {
-  background: #f1f3f4;
+  transform: translateY(-3px);
+  border-color: var(--blue);
 }
 
-.app-icon {
-  width: 48px;
-  height: 48px;
-  margin: auto auto 10px;
-  border-radius: 50%;
-  background: #f1f3f4;
+.app-icon { font-size: 30px; margin-bottom: 10px; }
+.app small { color: var(--muted); }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 25px;
+}
+
+.hidden { display: none; }
+
+.result {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.result:last-child { border: 0; }
+
+.result a {
+  color: var(--blue);
+  font-size: 17px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.result p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 7px 0;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 13px;
+  background: #000;
+}
+
+.video-input {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 23px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.app p {
+.video-input input {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.video-input button {
+  background: var(--blue);
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.note {
   font-size: 13px;
-  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 footer {
-  margin-top: 50px;
-  color: #777;
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
   font-size: 12px;
 }
 
-@media (max-width: 450px) {
-  .logo { font-size: 49px; }
-  main { padding-top: 55px; }
+@media(max-width:600px) {
+  header { height: auto; padding: 15px; gap: 12px; flex-wrap: wrap; }
+  main { margin-top: 35px; }
+  .hero h1 { letter-spacing: -2px; }
 }
 </style>
 </head>
@@ -151,73 +268,289 @@ footer {
 <body>
 
 <header>
-  <span>NEXUS</span>
-  <a href="https://www.google.com">Google</a>
+  <div class="brand">
+    <span>N</span><span>E</span><span>X</span><span>U</span><span>S</span>
+  </div>
+
+  <nav>
+    <button onclick="home()">Home</button>
+    <button onclick="showSection('knowledge')">Knowledge</button>
+    <button onclick="showSection('videos')">Videos</button>
+    <button onclick="showSection('apps')">Apps</button>
+    <button onclick="toggleDark()">☾</button>
+  </nav>
 </header>
 
 <main>
 
-  <div class="logo">
-    <span>N</span><span>E</span><span>X</span><span>U</span><span>S</span>
+<section id="home">
+  <div class="hero">
+    <h1 class="brand">
+      <span>N</span><span>E</span><span>X</span><span>U</span><span>S</span>
+    </h1>
+    <p>Explore. Discover. Learn.</p>
+
+    <form class="search" onsubmit="searchNow(event)">
+      <span>⌕</span>
+      <input id="query" placeholder="Search anything..." required>
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="modes">
+      <button class="mode active" id="webMode"
+        onclick="setMode('web')">Web Search</button>
+      <button class="mode" id="knowledgeMode"
+        onclick="setMode('knowledge')">Knowledge</button>
+      <button class="mode" id="videoMode"
+        onclick="setMode('video')">YouTube</button>
+    </div>
   </div>
 
-  <form action="https://www.google.com/search" method="GET">
-    <div class="search-box">
-      <input
-        type="text"
-        name="q"
-        placeholder="Search the web with Google..."
-        required
-      >
-      <button type="submit" aria-label="Search">⌕</button>
-    </div>
-
-    <div class="buttons">
-      <button type="submit">Google Search</button>
-    </div>
-  </form>
-
-  <h3>Your favourite apps</h3>
+  <h2 class="section-title">Your apps</h2>
 
   <div class="apps">
-
     <a class="app" href="https://www.google.com" target="_blank">
-      <div class="app-icon">🔍</div>
-      <p>Google</p>
+      <div class="app-icon">🔍</div>Google<br><small>Search</small>
     </a>
-
     <a class="app" href="https://www.youtube.com" target="_blank">
-      <div class="app-icon">▶️</div>
-      <p>YouTube</p>
+      <div class="app-icon">▶️</div>YouTube<br><small>Videos</small>
     </a>
-
     <a class="app" href="https://mail.google.com" target="_blank">
-      <div class="app-icon">✉️</div>
-      <p>Gmail</p>
+      <div class="app-icon">✉️</div>Gmail<br><small>Email</small>
     </a>
-
     <a class="app" href="https://drive.google.com" target="_blank">
-      <div class="app-icon">📁</div>
-      <p>Google Drive</p>
+      <div class="app-icon">📁</div>Drive<br><small>Files</small>
     </a>
-
     <a class="app" href="https://classroom.google.com" target="_blank">
-      <div class="app-icon">🎓</div>
-      <p>Classroom</p>
+      <div class="app-icon">🎓</div>Classroom<br><small>School</small>
     </a>
-
     <a class="app" href="https://www.wikipedia.org" target="_blank">
-      <div class="app-icon">📚</div>
-      <p>Wikipedia</p>
+      <div class="app-icon">📚</div>Wikipedia<br><small>Learning</small>
     </a>
-
   </div>
 
-  <footer>
-    NEXUS • Your personal web homepage
-  </footer>
+  <h2 class="section-title">Video player</h2>
+  <div class="panel">
+    <p>Watch a YouTube video inside NEXUS by pasting its link.</p>
+    <div class="video-input">
+      <input id="videoURL" placeholder="Paste a YouTube video link">
+      <button onclick="playVideo()">Play video</button>
+    </div>
+    <p class="note">Only videos that allow embedding will play here.</p>
+    <div id="playerArea" class="hidden" style="margin-top:18px">
+      <iframe id="player" class="video-frame"
+        title="YouTube video player"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section id="knowledge" class="hidden">
+  <h2 class="section-title">Knowledge Search</h2>
+  <p class="note">Search Wikipedia articles and read summaries without leaving NEXUS.</p>
+  <form class="search" onsubmit="knowledgeSearch(event)">
+    <span>📚</span>
+    <input id="knowledgeQuery" placeholder="Search a topic..." required>
+    <button>Search</button>
+  </form>
+  <div id="knowledgeResults" class="panel">
+    Your search results will appear here.
+  </div>
+</section>
+
+<section id="videos" class="hidden">
+  <h2 class="section-title">Video Explorer</h2>
+  <p>Find videos using YouTube's official search.</p>
+  <form class="search" onsubmit="youtubeSearch(event)">
+    <span>▶</span>
+    <input id="youtubeQuery" placeholder="Search YouTube..." required>
+    <button>Search</button>
+  </form>
+  <div class="panel">
+    <p class="note">
+      YouTube search results open on YouTube. You can paste a video link
+      on the Home page to use the embedded player.
+    </p>
+    <a href="https://www.youtube.com" target="_blank">Visit YouTube ↗</a>
+  </div>
+</section>
+
+<section id="apps" class="hidden">
+  <h2 class="section-title">Applications</h2>
+  <div class="apps">
+    <a class="app" href="https://docs.google.com" target="_blank">
+      <div class="app-icon">📄</div>Google Docs
+    </a>
+    <a class="app" href="https://www.canva.com" target="_blank">
+      <div class="app-icon">🎨</div>Canva
+    </a>
+    <a class="app" href="https://classroom.google.com" target="_blank">
+      <div class="app-icon">🎓</div>Classroom
+    </a>
+    <a class="app" href="https://www.wikipedia.org" target="_blank">
+      <div class="app-icon">📚</div>Wikipedia
+    </a>
+    <a class="app" href="https://drive.google.com" target="_blank">
+      <div class="app-icon">📁</div>Google Drive
+    </a>
+    <a class="app" href="https://www.youtube.com" target="_blank">
+      <div class="app-icon">▶️</div>YouTube
+    </a>
+  </div>
+</section>
 
 </main>
+
+<footer>
+  NEXUS 2.0 · Your personal web dashboard
+</footer>
+
+<script>
+let currentMode = "web";
+
+function showSection(name) {
+  ["home","knowledge","videos","apps"].forEach(id => {
+    document.getElementById(id).classList.toggle("hidden", id !== name);
+  });
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function home() {
+  showSection("home");
+}
+
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+function setMode(mode) {
+  currentMode = mode;
+
+  ["web","knowledge","video"].forEach(m => {
+    document.getElementById(m + "Mode")
+      .classList.toggle("active", m === mode);
+  });
+
+  document.getElementById("query").placeholder =
+    mode === "web" ? "Search the web..." :
+    mode === "knowledge" ? "Search knowledge..." :
+    "Search YouTube videos...";
+}
+
+function searchNow(event) {
+  event.preventDefault();
+  const q = document.getElementById("query").value.trim();
+  if (!q) return;
+
+  if (currentMode === "web") {
+    window.open("https://www.google.com/search?q=" + encodeURIComponent(q), "_blank");
+  } else if (currentMode === "knowledge") {
+    showSection("knowledge");
+    document.getElementById("knowledgeQuery").value = q;
+    knowledgeSearch();
+  } else {
+    window.open("https://www.youtube.com/results?search_query=" +
+      encodeURIComponent(q), "_blank");
+  }
+}
+
+async function knowledgeSearch(event) {
+  if (event) event.preventDefault();
+
+  const q = document.getElementById("knowledgeQuery").value.trim();
+  const output = document.getElementById("knowledgeResults");
+
+  if (!q) return;
+
+  output.innerHTML = "<p>Searching knowledge...</p>";
+
+  try {
+    const url = "https://en.wikipedia.org/w/api.php?action=query" +
+      "&generator=search&gsrsearch=" + encodeURIComponent(q) +
+      "&gsrnamespace=0&gsrlimit=8&prop=extracts|pageimages" +
+      "&exintro=1&explaintext=1&exsentences=3" +
+      "&pithumbsize=180&format=json&origin=*";
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Search unavailable");
+
+    const data = await response.json();
+    const pages = Object.values(data.query?.pages || {})
+      .sort((a,b) => a.index - b.index);
+
+    if (!pages.length) {
+      output.innerHTML = "<p>No articles found. Try another search.</p>";
+      return;
+    }
+
+    output.innerHTML = pages.map(page => `
+      <div class="result">
+        <a href="https://en.wikipedia.org/?curid=${page.pageid}"
+           target="_blank">${escapeHTML(page.title)}</a>
+        <p>${escapeHTML(page.extract || "Open the article to read more.")}</p>
+      </div>
+    `).join("");
+
+  } catch (error) {
+    output.innerHTML =
+      "<p>Could not load results. Check your connection or try again later.</p>";
+  }
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  })[char]);
+}
+
+function youtubeSearch(event) {
+  event.preventDefault();
+  const q = document.getElementById("youtubeQuery").value.trim();
+  if (!q) return;
+
+  window.open("https://www.youtube.com/results?search_query=" +
+    encodeURIComponent(q), "_blank");
+}
+
+function playVideo() {
+  const input = document.getElementById("videoURL").value.trim();
+
+  let id = null;
+
+  try {
+    const url = new URL(input);
+
+    if (url.hostname === "youtu.be") {
+      id = url.pathname.slice(1).split("/")[0];
+    } else if (
+      url.hostname === "youtube.com" ||
+      url.hostname.endsWith(".youtube.com")
+    ) {
+      if (url.pathname === "/watch") {
+        id = url.searchParams.get("v");
+      } else if (
+        url.pathname.startsWith("/embed/") ||
+        url.pathname.startsWith("/shorts/")
+      ) {
+        id = url.pathname.split("/")[2];
+      }
+    }
+  } catch (error) {}
+
+  if (!id || !/^[a-zA-Z0-9_-]{11}$/.test(id)) {
+    alert("Please enter a valid YouTube video link.");
+    return;
+  }
+
+  document.getElementById("player").src =
+    "https://www.youtube-nocookie.com/embed/" + id;
+
+  document.getElementById("playerArea").classList.remove("hidden");
+}
+</script>
 
 </body>
 </html>
